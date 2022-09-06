@@ -1,4 +1,6 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
+import { EvaluationPage } from './EvaluationPage';
+import { HomePage } from './HomePage';
 
 export class StoaHeader {
     readonly page: Page;
@@ -11,11 +13,13 @@ export class StoaHeader {
         this.evaluationLink = page.locator('a', { hasText: 'evaluations' });
     }
 
-    async openHomeLink() {
+    async openHomeLink() : Promise<HomePage> {
         await this.homeLink.click();
+        return new HomePage(this.page);
     }
 
-    async openEvaluationLink() {
+    async openEvaluationLink(): Promise<EvaluationPage> {
         await this.evaluationLink.click();
+        return new EvaluationPage(this.page);
     }
 }
