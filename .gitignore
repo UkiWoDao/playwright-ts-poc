@@ -136,3 +136,4 @@ dist
 /playwright/.cache/
 
 build
+test/tests/credentials.json
