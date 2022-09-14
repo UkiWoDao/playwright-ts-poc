@@ -13,7 +13,7 @@ export class LoginPage {
         this.submitButton = page.locator("[type='submit']");
     }
 
-    async open() {
+    async visit() {
         await this.page.goto('/login');
     }
 
