@@ -40,6 +40,7 @@ const config: PlaywrightTestConfig = {
     trace: 'retain-on-failure',
     headless: false,
     screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
     viewport: { 
       width: 1920, 
       height: 1080 

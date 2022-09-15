@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 
 export class LoginPage {
     private readonly page: Page;
@@ -22,4 +22,17 @@ export class LoginPage {
         await this.passwordField.fill(password);
         await this.submitButton.click();
     }
+
+    async expectRedirectToHomepage() {
+        this.expectUrlToBe('/');
+    }
+
+    async expectPageNotToRedirect() {
+        this.expectUrlToBe('/login');
+    }
+
+    private async expectUrlToBe(path: string) {
+        await expect(this.page).toHaveURL(path);
+    }
+
 }

@@ -18,7 +18,7 @@ test.describe("Authentication", () => {
             await loginPage.logInAs(User.email, User.password);
             
             // ASSERT
-            await expect(page).toHaveURL('https://portico.dev.stoaeng.com/');
+            await loginPage.expectRedirectToHomepage();
         })
     }
 
@@ -31,7 +31,7 @@ test.describe("Authentication", () => {
         await loginPage.logInAs(randomValidEmail, randomValidPassword);
         
         // ASSERT
-        await expect(page).toHaveURL('/login');
+        await loginPage.expectPageNotToRedirect();
     })
 
 });
